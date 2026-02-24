@@ -1,0 +1,17 @@
+{
+  "name": "@wedding/email-templates",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@react-email/components": "^1.0.7"
+  },
+  "devDependencies": {
+    "react": "^19.2.4",
+    "@types/react": "^19.2.14"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

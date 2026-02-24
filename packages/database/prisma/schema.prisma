@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AttendanceStatus {
+  YES
+  NO
+  PENDING
+}
+
+model Household {
+  id          String    @id @default(uuid())
+  name        String
+  maxPlusOnes Int       @map("max_plus_ones")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  guests      Guest[]
+  plusOnes    PlusOne[]
+
+  @@map("households")
+}
+
+model Guest {
+  id                  String            @id @default(uuid())
+  householdId         String            @map("household_id")
+  firstName           String            @map("first_name")
+  lastName            String            @map("last_name")
+  email               String?
+  isPrimary           Boolean           @default(false) @map("is_primary")
+  isPlusOne           Boolean           @default(false) @map("is_plus_one")
+  attending           AttendanceStatus? @default(PENDING)
+  dietaryRestrictions String?           @map("dietary_restrictions")
+  rsvpSubmittedAt     DateTime?         @map("rsvp_submitted_at")
+  rsvpToken           String?           @unique @map("rsvp_token")
+  createdAt           DateTime          @default(now()) @map("created_at")
+  updatedAt           DateTime          @updatedAt @map("updated_at")
+
+  household Household          @relation(fields: [householdId], references: [id], onDelete: Cascade)
+  mailing   MailingListEntry[]
+  confirmed PlusOne[]          @relation("GuestConfirmedPlusOnes")
+
+  @@index([householdId])
+  @@index([firstName, lastName])
+  @@map("guests")
+}
+
+model PlusOne {
+  id                  String   @id @default(uuid())
+  householdId         String   @map("household_id")
+  confirmedBy         String   @map("confirmed_by")
+  firstName           String   @map("first_name")
+  lastName            String   @map("last_name")
+  dietaryRestrictions String?  @map("dietary_restrictions")
+  createdAt           DateTime @default(now()) @map("created_at")
+
+  household Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
+  confirmer Guest     @relation("GuestConfirmedPlusOnes", fields: [confirmedBy], references: [id], onDelete: Cascade)
+
+  @@index([householdId])
+  @@index([confirmedBy])
+  @@map("plus_ones")
+}
+
+model MailingListEntry {
+  id         String   @id @default(uuid())
+  guestId    String   @map("guest_id")
+  email      String
+  subscribed Boolean  @default(true)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  guest Guest @relation(fields: [guestId], references: [id], onDelete: Cascade)
+
+  @@unique([guestId, email])
+  @@index([email])
+  @@map("mailing_list_entries")
+}

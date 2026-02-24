@@ -1,0 +1,21 @@
+{
+  "name": "wedding-website-templates",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.2.19",
+  "workspaces": ["packages/*", "templates/*"],
+  "scripts": {
+    "dev:stationery": "turbo run dev --filter=@wedding/template-stationery",
+    "dev:cinematic": "turbo run dev --filter=@wedding/template-cinematic",
+    "dev:watercolor": "turbo run dev --filter=@wedding/template-watercolor",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "prisma:generate": "turbo run prisma:generate --filter=@wedding/database",
+    "prisma:migrate": "bun run --cwd packages/database prisma migrate dev",
+    "prisma:seed": "bun run packages/database/prisma/seed.ts"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.9.3"
+  }
+}
