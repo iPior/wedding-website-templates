@@ -56,13 +56,13 @@ export default function HomePage() {
 
         {/* Bottom band — countdown + RSVP within the same section */}
         <div className="border-t border-[#f0e0e4] pt-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <CountdownTimer />
+          <CountdownTimer targetDate={weddingConfig.date} />
           <div className="flex flex-col items-start gap-3 md:items-end">
             <p className="text-sm uppercase tracking-[0.3em] text-[#8a7f7f]">
               Will you join us?
             </p>
             <Link
-              href="/3/rsvp"
+              href="/rsvp"
               className="inline-block bg-[#2c2424] text-white text-xs uppercase tracking-[0.3em] px-10 py-4 transition-colors duration-300 hover:bg-[#d4a0b0]"
             >
               RSVP Now
@@ -74,4 +74,3 @@ export default function HomePage() {
     </main>
   );
 }
-
