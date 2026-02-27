@@ -1,6 +1,8 @@
 # Wedding Website Design Showcase
 
-This repo is now a single Next.js app that showcases three complete wedding website designs in route namespaces:
+I had some leftover designs when making my wedding website so I figured I would throw them on here for anyone to use. I had Supabase connected for auth and database, Resend for email broadcasting, and my own RSVP system. That's all been striped from the original project to keep this repo as a preview only. 
+
+Originally hosted as a monorepo, but now this repo is now a single Next.js app that showcases three complete wedding website designs in route namespaces:
 
 - `/watercolor`
 - `/stationery`
@@ -26,44 +28,3 @@ A floating variant switcher is overlaid on every page so you can jump between de
 ## Why this structure
 
 For demos, browsing designs as routes in one app is simpler than running separate template repos/apps.
-
-## Quick Start
-
-```bash
-bun install
-bun run dev
-```
-
-Open `http://localhost:3000`.
-
-## Commands
-
-```bash
-bun run dev
-bun run build
-bun run lint
-```
-
-## Project Structure
-
-```text
-src/app/
-  page.tsx                 # Showcase home
-  watercolor/*             # Watercolor design pages
-  stationery/*             # Stationery design pages
-  cinematic/*              # Cinematic design pages
-src/components/
-  demo-rsvp-flow.tsx       # Static RSVP interaction used in demos
-  variant-switcher.tsx      # Floating cross-variant route switcher
-  admin/mock-admin-page.tsx # Themed mock admin dashboard pages
-packages/ui/               # Shared UI primitives + reusable components
-src/lib/wedding-config.ts  # Shared content for names/date/faq/etc.
-```
-
-## Important Note
-
-The original full-stack version of this project used Supabase, Prisma, Resend, admin routes, and a production RSVP pipeline. This showcase intentionally strips those backend systems so the focus stays on visual design exploration.
-
-## License
-
-MIT
