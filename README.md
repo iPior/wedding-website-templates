@@ -1,4 +1,4 @@
-# Wedding Website Design Showcase
+# Extra Wedding Website Designs
 
 I had some leftover designs when making my wedding website so I figured I would throw them on here for anyone to use. I had Supabase connected for auth and database, Resend for email broadcasting, and my own RSVP system. That's all been striped from the original project to keep this repo as a preview only. 
 
