@@ -11,25 +11,18 @@ This folder is a lightweight knowledge pack for coding agents working in this re
 ## Ground Rules
 
 - Package manager is Bun (`bun`, not `npm` or `pnpm`).
-- Monorepo is Turborepo (`packages/*` + `templates/*`).
-- Prefer editing shared logic in `packages/*` and keep template-specific look/feel in `templates/*`.
+- This repo is a single Next.js showcase app.
+- Keep each theme's visual language distinct (`/watercolor`, `/stationery`, `/cinematic`).
+- Themed mock admin exists under `/<theme>/admin` and `/admin` redirects to `/watercolor/admin`.
 - Do not commit secrets or local env files.
 
 ## Useful Commands
 
 - Install deps: `bun install`
-- Run one template:
-  - `bun run dev:stationery` (3001)
-  - `bun run dev:cinematic` (3002)
-  - `bun run dev:watercolor` (3003)
-- Build all: `bun run build`
-- Lint all: `bun run lint`
-- Prisma generate: `bun run prisma:generate`
-- Prisma migrate: `bun run prisma:migrate`
-- Seed sample data: `bun run prisma:seed`
+- Dev server: `bun run dev`
+- Build: `bun run build`
+- Lint: `bun run lint`
 
 ## Related Docs
 
 - Root project guide: `README.md`
-- Claude-oriented notes: `.claude/CLAUDE.md`
-- Product and architecture spec: `.claude/PROJECT.md`

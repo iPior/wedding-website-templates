@@ -3,19 +3,25 @@
   "private": true,
   "type": "module",
   "packageManager": "bun@1.2.19",
-  "workspaces": ["packages/*", "templates/*"],
+  "workspaces": ["packages/ui"],
   "scripts": {
-    "dev:stationery": "turbo run dev --filter=@wedding/template-stationery",
-    "dev:cinematic": "turbo run dev --filter=@wedding/template-cinematic",
-    "dev:watercolor": "turbo run dev --filter=@wedding/template-watercolor",
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "prisma:generate": "turbo run prisma:generate --filter=@wedding/database",
-    "prisma:migrate": "bun run --cwd packages/database prisma migrate dev",
-    "prisma:seed": "bun run packages/database/prisma/seed.ts"
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@wedding/ui": "workspace:*",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "lucide-react": "^0.468.0"
   },
   "devDependencies": {
-    "turbo": "^2.5.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.0.0",
+    "tailwindcss": "^4.0.0",
+    "@types/react": "^19.0.0",
     "typescript": "^5.9.3"
   }
 }
